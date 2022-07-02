@@ -1,0 +1,16 @@
+{
+  "name": "inner-voice",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel src/index.html --open",
+    "build": "parcel build src/index.html"
+  },
+  "dependencies": {
+    "rita": "^2.8.1"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "2.6.2",
+    "parcel": "^2.6.2"
+  }
+}
