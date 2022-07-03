@@ -4,6 +4,7 @@ import { Phone, Phonemes } from "./lib/phonemes";
 import { Note } from "./lib/notes";
 import { strip, wait } from "./lib/utils";
 import { get } from "./lib/get";
+import { CONFIG } from "./lib/config";
 
 const DOM = {
   root: document.getElementById("Root")!,
@@ -29,7 +30,7 @@ const init = async () => {
 
   const {
     entity: { body },
-  } = await get("homophones");
+  } = await get(CONFIG.id);
 
   const tokens = body.split(" ").filter((token: string) => token !== "\n");
 
@@ -71,7 +72,7 @@ const step = async () => {
   await notes.reduce(async (promise, [frequency, duration]) => {
     await promise;
 
-    await tone({ frequency, type: "sine", duration });
+    await tone({ frequency, type: CONFIG.type, duration });
   }, Promise.resolve());
 
   document.getElementById("Word")!.classList.add("Word--active");

@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "lodash.deburr": "^4.1.0",
+    "queryparams": "^1.2.2",
     "rita": "^2.8.1"
   },
   "devDependencies": {
