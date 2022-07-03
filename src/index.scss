@@ -15,7 +15,7 @@ body {
   background-color: black;
   color: aliceblue;
   -webkit-font-smoothing: antialiased;
-  font-size: max(4vw, 36px);
+  font-size: max(6vw, 36px);
 }
 
 .Root {
@@ -24,6 +24,12 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
+}
+
+.Play,
+.Word {
+  text-transform: uppercase;
+  letter-spacing: 0.0625em;
 }
 
 .Play {
@@ -40,8 +46,6 @@ body {
   transition: color 250ms;
   line-height: 1;
   padding: 0.25em 0.5em;
-  text-transform: uppercase;
-  letter-spacing: 0.03125em;
 
   &:hover {
     color: blue;
@@ -49,8 +53,6 @@ body {
 }
 
 .Word {
-  text-transform: uppercase;
-  letter-spacing: 0.03125em;
   transition: color 250ms, opacity 500ms, transform 1s;
   transition-delay: 100ms;
   user-select: none;
