@@ -49,15 +49,19 @@ const init = async () => {
 };
 
 const step = async () => {
-  STATE.cursor = STATE.cursor + 1;
+  if (STATE.cursor >= STATE.words.length - 1) {
+    STATE.cursor = 0;
 
-  const word = STATE.words[STATE.cursor % STATE.words.length];
+    await wait(1000);
+  } else {
+    STATE.cursor = STATE.cursor + 1;
+  }
+
+  const word = STATE.words[STATE.cursor];
 
   const notes = word.phones.map((phone) => {
     const latin = Phonemes.fromLatin(phone);
     const octave = Phonemes.octave(phone);
-
-    console.log({ latin, octave, phone });
 
     const note = `${latin}${octave}`;
     const frequency = Note.fromLatin(note).frequency();
@@ -77,7 +81,7 @@ const step = async () => {
 
   document.getElementById("Word")!.classList.add("Word--active");
 
-  await wait(300);
+  await wait(150);
 
   step();
 };

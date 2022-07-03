@@ -54,7 +54,6 @@ body {
 
 .Word {
   transition: color 250ms, opacity 500ms, transform 1s;
-  transition-delay: 100ms;
   user-select: none;
 
   &--active {
