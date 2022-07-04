@@ -7,3 +7,7 @@ export const wait = (ms: number) => {
 export const strip = (input: string): string => {
   return deburr(input).replace(/[!"#$%&‘’“”'()*+,-./:;<=>?@[\]^_`{|}~]/g, "");
 };
+
+export const range = (min: number, max: number) => {
+  return Math.random() * (max - min) + min;
+};

@@ -1,68 +1,70 @@
-export const NOTES = ["F", "C", "G", "D", "A", "E", "B"] as const;
+import { range } from "./utils";
 
+export const NOTES = ["F", "C", "G", "D", "A", "E", "B"] as const;
 export const OCTAVE_OFFSET = 2;
+export const SPEED = 1;
 
 export const PHONEMES = {
-  aa: { duration: 217 },
-  ae: { duration: 286 },
-  ah: { duration: 328 },
-  ao: { duration: 463 },
-  aw: { duration: 456 },
-  ax: { duration: 456 },
-  ay: { duration: 300 },
-  b: { duration: 75 },
-  ch: { duration: 126 },
-  d: { duration: 75 },
-  dh: { duration: 168 },
-  eh: { duration: 193 },
-  er: { duration: 420 },
-  ey: { duration: 288 },
-  f: { duration: 93 },
-  g: { duration: 93 },
-  hh: { duration: 171 },
-  ih: { duration: 286 },
-  iy: { duration: 158 },
-  jh: { duration: 138 },
-  k: { duration: 93 },
-  l: { duration: 328 },
-  m: { duration: 185 },
-  n: { duration: 316 },
-  ng: { duration: 207 },
-  ow: { duration: 417 },
-  oy: { duration: 578 },
-  p: { duration: 94 },
-  r: { duration: 132 },
-  s: { duration: 298 },
-  sh: { duration: 308 },
-  t: { duration: 76 },
-  th: { duration: 256 },
-  uh: { duration: 315 },
-  uw: { duration: 434 },
-  v: { duration: 287 },
-  w: { duration: 330 },
-  wh: { duration: 352 },
-  y: { duration: 300 },
-  yu: { duration: 208 },
-  z: { duration: 320 },
-  zh: { duration: 192 },
+  aa: [106, 128],
+  ae: [133, 187],
+  ah: [65, 85],
+  ao: [65, 85],
+  aw: [106, 160],
+  ax: [65, 85],
+  ay: [106, 160],
+  b: [32, 43],
+  ch: [65, 85],
+  d: [32, 43],
+  dh: [65, 85],
+  eh: [65, 85],
+  er: [65, 96],
+  ey: [106, 160],
+  f: [32, 43],
+  g: [32, 43],
+  hh: [65, 85],
+  ih: [65, 85],
+  iy: [106, 160],
+  jh: [65, 85],
+  k: [32, 43],
+  l: [85, 96],
+  m: [85, 96],
+  n: [85, 96],
+  ng: [85, 96],
+  ow: [106, 160],
+  oy: [106, 160],
+  p: [32, 43],
+  r: [32, 43],
+  s: [85, 96],
+  sh: [85, 96],
+  t: [32, 43],
+  th: [85, 96],
+  uh: [106, 160],
+  uw: [106, 160],
+  v: [85, 96],
+  w: [85, 96],
+  wh: [85, 96],
+  y: [85, 96],
+  yu: [85, 96],
+  z: [85, 96],
+  zh: [85, 96],
 } as const;
+
+const PAUSE = [130, 170] as const;
 
 export type Phone = keyof typeof PHONEMES;
 
 export class Phonemes {
   static collection = PHONEMES;
   static octaveOffset = OCTAVE_OFFSET;
+  static notes = NOTES;
+  static speed = SPEED;
 
   static get(phoneme: keyof typeof PHONEMES) {
-    return this.collection[phoneme] || {};
-  }
-
-  static notes() {
-    return NOTES;
+    return this.collection[phoneme];
   }
 
   static octaves() {
-    return this.size() / this.notes().length;
+    return this.size() / this.notes.length;
   }
 
   static size() {
@@ -78,7 +80,7 @@ export class Phonemes {
   }
 
   static fromLatin(phone: Phone) {
-    return this.notes()[this.indexOf(phone) % this.notes().length];
+    return this.notes[this.indexOf(phone) % this.notes.length];
   }
 
   static octave(phone: Phone) {
@@ -89,6 +91,18 @@ export class Phonemes {
   }
 
   static duration(phone: Phone) {
-    return this.get(phone).duration / 3;
+    const [min, max] = this.get(phone);
+    return range(min, max) * this.speed;
+  }
+
+  static pause() {
+    return range(...PAUSE);
+  }
+
+  static map<T>(fn: (key: Phone, min: number, max: number) => T) {
+    return this.keys().map((key: Phone) => {
+      const [min, max] = this.get(key);
+      return fn(key, min, max);
+    });
   }
 }
