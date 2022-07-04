@@ -1,8 +1,9 @@
+import { CONFIG } from "./config";
 import { range } from "./utils";
 
 export const NOTES = ["F", "C", "G", "D", "A", "E", "B"] as const;
 export const OCTAVE_OFFSET = 2;
-export const SPEED = 1;
+export const SPEED = CONFIG.speed;
 
 export const PHONEMES = {
   aa: [106, 128],

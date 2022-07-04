@@ -13,7 +13,8 @@
 
 ## Parameters
 
-| Param  | Description     | Type                                             | Default        |
-| ------ | --------------- | ------------------------------------------------ | -------------- |
-| `id`   | Entity ID       | `string`                                         | `"homophones"` |
-| `type` | Oscillator type | `"sawtooth" \| "sine" \| "square" \| "triangle"` | `"sine"`       |
+| Param   | Description     | Type                                             | Default        |
+| ------- | --------------- | ------------------------------------------------ | -------------- |
+| `id`    | Entity ID       | `string`                                         | `"homophones"` |
+| `type`  | Oscillator type | `"sawtooth" \| "sine" \| "square" \| "triangle"` | `"sine"`       |
+| `speed` | Reading speed   | `number`                                         | `1`            |
