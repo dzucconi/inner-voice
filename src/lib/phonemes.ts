@@ -97,7 +97,7 @@ export class Phonemes {
   }
 
   static pause() {
-    return range(...PAUSE);
+    return range(...PAUSE) * this.speed;
   }
 
   static map<T>(fn: (key: Phone, min: number, max: number) => T) {
