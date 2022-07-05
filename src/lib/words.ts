@@ -9,7 +9,7 @@ export interface Word {
 }
 
 export const build = (input: string): Word[] => {
-  const tokens = input.split(" ").filter((token: string) => token !== "\n");
+  const tokens = input.split(/(\s+)/).filter((token: string) => token !== "\n");
 
   return tokens.map((token: string) => ({
     token,
