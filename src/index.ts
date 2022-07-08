@@ -22,17 +22,25 @@ const init = async () => {
     <button id="Loading" class="Play" disabled="true">Loading</button>
   `;
 
-  const {
-    entity: { body },
-  } = await get(CONFIG.id);
+  try {
+    const {
+      entity: { body },
+    } = await get(CONFIG.id);
 
-  STATE.words = build(body);
+    STATE.words = build(body);
 
-  DOM.root.innerHTML = `
-    <button id="Play" class="Play">Play</button>
-  `;
+    DOM.root.innerHTML = `
+      <button id="Play" class="Play">Play</button>
+    `;
 
-  document.getElementById("Play")!.addEventListener("click", step);
+    document.getElementById("Play")!.addEventListener("click", step);
+  } catch (err) {
+    console.error(err);
+
+    DOM.root.innerHTML = `
+      <div class="Error">Error</div>
+    `;
+  }
 };
 
 const step = async () => {

@@ -27,7 +27,8 @@ body {
 }
 
 .Play,
-.Word {
+.Word,
+.Error {
   text-transform: uppercase;
   letter-spacing: 0.0625em;
 }
@@ -61,4 +62,8 @@ body {
     opacity: 0;
     transform: scale(0.9)
   }
+}
+
+.Error {
+  color: red;
 }
