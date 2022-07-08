@@ -1,11 +1,12 @@
 import { CONFIG } from "./config";
 import { range } from "./utils";
 
-export const NOTES = ["F", "C", "G", "D", "A", "E", "B"] as const;
-export const OCTAVE_OFFSET = 2;
-export const SPEED = CONFIG.speed;
+const NOTES = ["F", "C", "G", "D", "A", "E", "B"] as const;
+const OCTAVE_OFFSET = 2;
+const SPEED = CONFIG.speed;
+const PAUSE = CONFIG.pause;
 
-export const PHONEMES = {
+const PHONEMES = {
   aa: [106, 128],
   ae: [133, 187],
   ah: [65, 85],
@@ -49,8 +50,6 @@ export const PHONEMES = {
   z: [85, 96],
   zh: [85, 96],
 } as const;
-
-const PAUSE = [130, 170] as const;
 
 export type Phone = keyof typeof PHONEMES;
 

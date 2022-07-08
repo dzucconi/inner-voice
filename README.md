@@ -13,8 +13,9 @@
 
 ## Parameters
 
-| Param   | Description     | Type                                             | Default        |
-| ------- | --------------- | ------------------------------------------------ | -------------- |
-| `id`    | Entity ID       | `string`                                         | `"homophones"` |
-| `type`  | Oscillator type | `"sawtooth" \| "sine" \| "square" \| "triangle"` | `"sine"`       |
-| `speed` | Reading speed   | `number`                                         | `1`            |
+| Param   | Description       | Type                                             | Default        |
+| ------- | ----------------- | ------------------------------------------------ | -------------- |
+| `id`    | Entity ID         | `string`                                         | `"homophones"` |
+| `type`  | Oscillator type   | `"sawtooth" \| "sine" \| "square" \| "triangle"` | `"sine"`       |
+| `speed` | Reading speed     | `number`                                         | `1`            |
+| `pause` | Pause range in ms | `[number, number]`                               | `[130, 170]`   |
