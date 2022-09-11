@@ -18,6 +18,8 @@ export const tone = ({
 
     osc.connect(gain);
 
+    gain.gain.value = 0.5;
+
     osc.type = type;
     osc.frequency.value = frequency;
 
