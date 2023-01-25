@@ -19,3 +19,4 @@
 | `type`  | Oscillator type   | `"sawtooth" \| "sine" \| "square" \| "triangle"` | `"sine"`       |
 | `speed` | Reading speed     | `number`                                         | `1`            |
 | `pause` | Pause range in ms | `[number, number]`                               | `[130, 170]`   |
+| `mode`  | Playback mode     | `"notes" \| "chords"`                            | `"notes"`      |

@@ -59,10 +59,22 @@ const step = async () => {
     <div id="Word" class="Word">${word.token}</div>
   `;
 
-  await notes.reduce(async (promise, { frequency, duration }) => {
-    await promise;
-    await tone({ frequency, type: CONFIG.type, duration });
-  }, Promise.resolve());
+  if (CONFIG.mode === "chords") {
+    const duration = notes.reduce((total, note) => total + note.duration, 0);
+
+    await Promise.all(
+      notes.map(({ frequency }) => {
+        return tone({ frequency, type: CONFIG.type, duration });
+      })
+    );
+  }
+
+  if (CONFIG.mode === "notes") {
+    await notes.reduce(async (promise, { frequency, duration }) => {
+      await promise;
+      await tone({ frequency, type: CONFIG.type, duration });
+    }, Promise.resolve());
+  }
 
   document.getElementById("Word")!.classList.add("Word--active");
 

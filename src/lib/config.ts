@@ -5,9 +5,11 @@ export const CONFIG = params<{
   type: OscillatorType;
   speed: number;
   pause: [number, number];
+  mode: "notes" | "chords";
 }>({
   id: "homophones",
   type: "sine",
   speed: 1,
   pause: [130, 170],
+  mode: "notes",
 });
